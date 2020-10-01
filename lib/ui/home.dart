@@ -242,23 +242,21 @@ class _BillSplitterState extends State<BillSplitter> {
     );
   }
 
-  calculateTotalPerPerson(double tipPercentage, double billAmount, int splitBy) {
+  calculateTotalPerPerson(int tipPercentage, double billAmount, int splitBy) {
     return ((calculateTotalTip(billAmount, splitBy, tipPercentage) +
                 billAmount) /
             splitBy)
         .toStringAsFixed(2);
   }
 
-  //percentage should double rather than integer
-  calculateTotalTip(double billAmount, int splitBy, double tipPercentage) {
+  calculateTotalTip(double billAmount, int splitBy, int tipPercentage) {
     double totalTip = 0.0;
 
     if (billAmount < 0 || billAmount.toString().isEmpty || billAmount == null) {
     } else {
       totalTip = (billAmount * tipPercentage) / 100;
     }
-    
-    //only use 2 decimal for better readable
-    return totalTip.toStringAsFixed(2);
+
+    return totalTip;
   }
 }
